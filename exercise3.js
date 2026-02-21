@@ -3,9 +3,14 @@ const filterBar = document.querySelector('#filter-bar');
 const cards = document.querySelectorAll('.card');
 const filterBtns = document.querySelectorAll('.filter-btn');
 
+
+/*Using event delegation: instead of adding a click listener to every .filter-btn, we attach ONE listener to #filter-bar.
+We then check event.target to determine which button was clicked. */
 filterBar.addEventListener('click', function(event) {
 
 // 1. Guard: if event.target does not match '.filter-btn', return
+
+/* matches() checks if the clicked element matches the CSS selector '.filter-btn'. If not, we exit early. */
      if(!event.target.matches('.filter-btn')) return;
 
 // 2. Update active class on all buttons

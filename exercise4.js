@@ -1,10 +1,16 @@
 // exercise4.js
 const editList = document.querySelector('#edit-list');
 
+/* Using event delegation: instead of attaching a dblclick listener to each .edit-item, we attach one listener to the parent #edit-list.
+ We determine which item was interacted with using event.target. */
+
 editList.addEventListener('dblclick', function (event) {
 
     // 1. Find closest .edit-item from event.target; return if null
+    /* closest() searches upward in the DOM tree from the clicked element to find the nearest ancestor that matches '.edit-item'. */
     const item = event.target.closest('.edit-item');
+    
+    // If no .edit-item ancestor is found, exit early.
     if (!item) return;
 
     // 2. Return early if item already has .editing class 
